@@ -31,7 +31,6 @@ public class AuthController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public void login(@RequestBody LoginRequest loginRequest, HttpServletRequest request,
                                  HttpServletResponse response) {
-
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
                 loginRequest.getUsername(), loginRequest.getPassword());
 

@@ -5,5 +5,5 @@
     <logger name="org.springframework.boot" level="ERROR"/>
     <logger name="org.springframework.security" level="ERROR"/>
     <logger name="org.springframework.jpa" level="ERROR"/>
-    <logger name="org.springframework.web" level="DEBUG"/>
+    <logger name="org.springframework.web" level="ERROR"/>
 </configuration>

@@ -1,6 +1,7 @@
 package com.trajan.seed.webapp.domain.security.service;
 
 import com.trajan.seed.webapp.domain.security.User;
+import com.trajan.seed.webapp.rest.exception.OperationOnNonexistentResourceException;
 
 import java.util.List;
 
@@ -15,4 +16,8 @@ public interface UserService {
     User findByUsername(String username);
 
     void createUser(User user);
+
+    void updateUser(String username, User user) throws OperationOnNonexistentResourceException;
+
+    void deleteUser(String username) throws OperationOnNonexistentResourceException;
 }

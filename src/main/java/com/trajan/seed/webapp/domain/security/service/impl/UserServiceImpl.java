@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.trajan.seed.webapp.domain.security.User;
 import com.trajan.seed.webapp.domain.security.service.UserService;
 import com.trajan.seed.webapp.persistence.security.UserRepository;
+import com.trajan.seed.webapp.rest.exception.OperationOnNonexistentResourceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -36,5 +37,24 @@ public class UserServiceImpl implements UserService {
         user.setPassword(bc.encode(user.getPassword()));
         userRepository.save(user);
     }
+
+    @Override
+    public void updateUser(String username, User user) throws OperationOnNonexistentResourceException {
+        User originalUser = userRepository.findByUsername(username);
+        if (originalUser == null) {
+            throw new OperationOnNonexistentResourceException();
+        }
+        userRepository.save(user);
+    }
+
+    @Override
+    public void deleteUser(String username) throws OperationOnNonexistentResourceException {
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new OperationOnNonexistentResourceException();
+        }
+        userRepository.delete(user);
+    }
+
 
 }

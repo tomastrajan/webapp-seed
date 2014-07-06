@@ -25,6 +25,11 @@ public class BasicEntity {
         this.modified = new Date();
     }
 
+    @PreUpdate
+    public void preUpdate() {
+        this.modified = new Date();
+    }
+
     public Long getId() {
         return id;
     }
